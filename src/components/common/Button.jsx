@@ -1,0 +1,50 @@
+import React from "react";
+import { cn } from "../../utils/cn";
+
+const variants = {
+  primary:
+    "bg-indigo-600 hover:bg-indigo-500 text-white shadow-lg shadow-indigo-600/30 border border-indigo-500/30",
+  secondary:
+    "bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700/60",
+  outline:
+    "border border-slate-700 text-slate-300 hover:bg-slate-800/80 hover:text-white",
+  ghost:
+    "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50",
+  danger:
+    "bg-rose-600/20 text-rose-300 border border-rose-500/30 hover:bg-rose-600/30",
+  emerald:
+    "bg-emerald-600 hover:bg-emerald-500 text-white shadow-lg shadow-emerald-600/20",
+};
+
+const sizes = {
+  sm: "px-2.5 py-1.5 text-xs rounded-lg gap-1.5",
+  md: "px-3.5 py-2 text-sm rounded-xl gap-2",
+  lg: "px-5 py-2.5 text-base rounded-xl gap-2.5",
+  icon: "p-2 rounded-lg",
+};
+
+export const Button = ({
+  children,
+  variant = "primary",
+  size = "md",
+  className,
+  disabled = false,
+  ...props
+}) => {
+  return (
+    <button
+      disabled={disabled}
+      className={cn(
+        "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
+        variants[variant],
+        sizes[size],
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;
